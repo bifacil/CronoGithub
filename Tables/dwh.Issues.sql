@@ -12,6 +12,7 @@ select
 	issues.CreatedAt					FechaCreacionIssue,
 	issues.UpdatedAt					FechaActualizacionIssue,
 	if(issues.Locked=1,'Bloqueado')		Bloqueado,
+	if(issues.State='open')				EstaAbierto,
 	issues.State						Estado,
 	issues.Url							Url
 from stg.Issues 

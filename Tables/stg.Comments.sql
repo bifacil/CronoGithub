@@ -16,11 +16,12 @@ select
 from Github$Comments(
 	includebody=no,
 	Data=(
-		select top 10 RepositoryOwner,RepositoryName,IssueNumber, 
+		select  RepositoryOwner,RepositoryName,IssueNumber, 
 		from stg.Issues
 		where 
 			comments<>0
-			and RepositoryName='CronoIncidencias'
+			and state='open'
+			and RepositoryName in ('CronoIncidencias','CronoCRM')
 		order by issuenumber desc
 	)
 )

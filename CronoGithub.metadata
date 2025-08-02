@@ -36,7 +36,8 @@
       [TABLE COLUMN] (Name='Estado', DataType='varchar(6)', IsNullable=NO),
       [TABLE COLUMN] (Name='Url', DataType='varchar(62)', IsNullable=NO),
       [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
-      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='EstaAbierto', DataType='bit', IsNullable=YES)
     ), ForeignKeys=(
       [FOREIGN KEY] (Name='FK dwh.Issues(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
     ), Indexes=(
@@ -70,9 +71,10 @@
   ),
   Items=(
     [BUSINESS ITEM] (Name='Repositorios', Guid='mpAtDiZg', AggregationFunction='Default', Items=(
-      [BUSINESS ITEM] (Name='Propietario', Definition=Repositorios.Propietario, Guid='gqmVNGAx', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
-      [BUSINESS ITEM] (Name='Nombre repositorio', Definition=Repositorios.NombreRepositorio, Guid='emqXFbaA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
-      [BUSINESS ITEM] (Name='Repositorio', Definition=Repositorios.Repositorio, Guid='SzzsnfTb', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Repositorio', Definition=Repositorios.NombreRepositorio, Guid='emqXFbaA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=(
+        [BUSINESS ITEM] (Name='Propietario', Definition=Repositorios.Propietario, Guid='gqmVNGAx', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+        [BUSINESS ITEM] (Name='Repositorio FullName', Definition=Repositorios.Repositorio, Guid='SzzsnfTb', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
+      )),
       [BUSINESS ITEM] (Name='Rama principal', Definition=Repositorios.RamaPrincipal, Guid='gstoavfw', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Es privado', Definition=Repositorios.EsPrivado, Guid='aPNvwWZz', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Mb', Definition=Repositorios.Mb, Guid='rUkfXPFg', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
@@ -85,7 +87,7 @@
     [BUSINESS ITEM] (Name='Issues', Guid='BftBfYWn', AggregationFunction='Default', Items=(
       [BUSINESS ITEM] (Name='Número issue', Definition=Issues.NumeroIssue, Guid='gxJqypkK', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
       [BUSINESS ITEM] (Name='Id repositorio', Definition=Issues.IdRepositorio, Guid='RtqOACuu', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
-      [BUSINESS ITEM] (Name='Issue', Definition=Issues.Issue, Guid='mvEPqydW', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Issue', Definition=Issues.Issue, Guid='mvEPqydW', LovEnabled=YES, Hyperlink=Issues.Url, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Format=[BASIC FORMAT] (FormatType='Hyperlink'), Items=()),
       [BUSINESS ITEM] (Name='Usuario creador', Definition=Issues.UsuarioCreador, Guid='hGNDWQbR', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Número comentarios', Definition=Issues.NumeroComentarios, Guid='Erwgjpzl', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
       [BUSINESS ITEM] (Name='Fecha creacion issue', Definition=Issues.FechaCreacionIssue, Guid='tRTuqzAj', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTimeOffset', Items=()),
@@ -94,6 +96,9 @@
       [BUSINESS ITEM] (Name='Estado', Definition=Issues.Estado, Guid='AjahLahV', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Url', Definition=Issues.Url, Guid='ZHHkqTek', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Issues', Definition=EXPRESSION (count(Issues.IdIssue)), Guid='jEbQbuEb', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Issues abiertos', Definition=EXPRESSION (countif(Issues.EstaAbierto=YES,Issues.IdIssue)), Guid='YjjsJogk', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Issues cerrados', Definition=EXPRESSION (countif(Issues.EstaAbierto=NO,Issues.IdIssue)), Guid='UVpSPzkt', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Fecha último comentario', Definition=EXPRESSION (max(Comentarios.Fecha)), Guid='WZlNDkMk', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Items=()),
       [BUSINESS ITEM] (Name='Comentarios', Guid='OJIUKEsG', AggregationFunction='Default', Items=(
         [BUSINESS ITEM] (Name='Código comentario', Definition=Comentarios.CodigoComentario, Guid='aCKAVSHE', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Items=()),
         [BUSINESS ITEM] (Name='Autor', Definition=Comentarios.Autor, Guid='VilWsFwt', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),

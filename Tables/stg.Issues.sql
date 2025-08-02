@@ -15,7 +15,7 @@ select
 	State,
 	Url
 from Github$Issues(
-	[Limit]=50,
+--	[Limit]=50,
 	DATA=(
 		select RepositoryName,RepositoryOwner
 		from stg.Repositories
