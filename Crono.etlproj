@@ -4,7 +4,7 @@
       Name='DB11',
       Datasource=[SQL SERVER CONNECTION] ([Server]='xenon.crono.org', DatabaseName='DB11', Username='db11', Password=[ENCRYPTED TEXT] ([Data]='LTCc0t0P+9/+yfHJuuSTq9sH9to9FWx6aQPILQV/umlOlMl7oMbfhw==')),
       BackgroundColor=COLOR (Name='White'),
-      IsDefault=NO
+      IsDefault=YES
     )
   ),
   ExcludedFiles=(),
