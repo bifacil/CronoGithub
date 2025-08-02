@@ -1,0 +1,113 @@
+﻿[DATABASE] (
+  Name='CronoGithub',
+  Guid='WjWxVPGqTb',
+  DataSource=[SQL SERVER CONNECTION] ([Server]='xenon.crono.org', DatabaseName='DB11', Username='db11', Password=[ENCRYPTED TEXT] ([Data]='LTCc0t0P+9/+yfHJuuSTq9sH9to9FWx6aQPILQV/umlOlMl7oMbfhw==')),
+  [Tables]=(
+    [TABLE] (TableAlias='Comentarios', TableName='dwh.Comentarios', PkColumns=('IdComentario'), TableColumns=(
+      [TABLE COLUMN] (Name='IdComentario', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='CodigoComentario', DataType='decimal(10,0)', IsNullable=NO),
+      [TABLE COLUMN] (Name='IdIssue', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='Autor', DataType='varchar(15)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Fecha', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='FechaHoraCreacion', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='FechaHoraActualizacion', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='Url', DataType='varchar(80)', IsNullable=NO),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK dwh.Comentarios(IdIssue) dwh.Issues', IsNullable=NO, ColumnNames=('IdIssue'), ReferencedTableName='dwh.Issues', ReferencedColumnNames=('IdIssue'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Comentarios', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='CodigoComentario', ColumnsCount=1, ConstraintName='BK_Comentarios'),
+      [TABLE INDEX] (Name='INDEX dwh.Comentarios IdIssue', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='IdIssue', ColumnsCount=1),
+      [TABLE INDEX] (Name='PK_Comentarios', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='IdComentario', ColumnsCount=1, ConstraintName='PK_Comentarios')
+    )),
+    [TABLE] (TableAlias='Issues', TableName='dwh.Issues', PkColumns=('IdIssue'), TableColumns=(
+      [TABLE COLUMN] (Name='IdIssue', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='Propietario', DataType='varchar(50)', IsNullable=NO),
+      [TABLE COLUMN] (Name='NombreRepositorio', DataType='varchar(50)', IsNullable=NO),
+      [TABLE COLUMN] (Name='NumeroIssue', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='IdRepositorio', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='Issue', DataType='varchar(100)', IsNullable=YES),
+      [TABLE COLUMN] (Name='UsuarioCreador', DataType='varchar(21)', IsNullable=NO),
+      [TABLE COLUMN] (Name='NumeroComentarios', DataType='int', IsNullable=NO),
+      [TABLE COLUMN] (Name='FechaCreacionIssue', DataType='datetimeoffset', IsNullable=YES),
+      [TABLE COLUMN] (Name='FechaActualizacionIssue', DataType='datetimeoffset', IsNullable=YES),
+      [TABLE COLUMN] (Name='Bloqueado', DataType='varchar(9)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Estado', DataType='varchar(6)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Url', DataType='varchar(62)', IsNullable=NO),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+    ), ForeignKeys=(
+      [FOREIGN KEY] (Name='FK dwh.Issues(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Issues', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Issues', ColumnsCount=3, ConstraintName='BK_Issues'),
+      [TABLE INDEX] (Name='INDEX dwh.Issues IdRepositorio', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Issues', [Column]='IdRepositorio', ColumnsCount=1),
+      [TABLE INDEX] (Name='PK_Issues', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Issues', [Column]='IdIssue', ColumnsCount=1, ConstraintName='PK_Issues')
+    )),
+    [TABLE] (TableAlias='Repositorios', TableName='dwh.Repositorios', PkColumns=('IdRepositorio'), TableColumns=(
+      [TABLE COLUMN] (Name='IdRepositorio', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='Propietario', DataType='varchar(50)', IsNullable=NO),
+      [TABLE COLUMN] (Name='NombreRepositorio', DataType='varchar(50)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Repositorio', DataType='varchar(37)', IsNullable=NO),
+      [TABLE COLUMN] (Name='RamaPrincipal', DataType='varchar(6)', IsNullable=NO),
+      [TABLE COLUMN] (Name='EsPrivado', DataType='varchar(7)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Mb', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='TieneIssues', DataType='bit', IsNullable=YES),
+      [TABLE COLUMN] (Name='Tienediscussions', DataType='bit', IsNullable=YES),
+      [TABLE COLUMN] (Name='Url', DataType='varchar(56)', IsNullable=NO),
+      [TABLE COLUMN] (Name='FechaCreacion', DataType='datetimeoffset', IsNullable=YES),
+      [TABLE COLUMN] (Name='FechaActualizacion', DataType='datetimeoffset', IsNullable=YES),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Repositorios', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Repositorios', ColumnsCount=2, ConstraintName='BK_Repositorios'),
+      [TABLE INDEX] (Name='PK_Repositorios', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Repositorios', [Column]='IdRepositorio', ColumnsCount=1, ConstraintName='PK_Repositorios')
+    ))
+  ),
+  Joins=(
+    [JOIN] (TableAlias1='Comentarios', TableAlias2='Issues', JoinType='InnerJoin', UsingColumnsTable1=('IdIssue'), UsingColumnsTable2=('IdIssue')),
+    [JOIN] (TableAlias1='Issues', TableAlias2='Repositorios', JoinType='InnerJoin', UsingColumnsTable1=('IdRepositorio'), UsingColumnsTable2=('IdRepositorio'))
+  ),
+  Items=(
+    [BUSINESS ITEM] (Name='Repositorios', Guid='mpAtDiZg', AggregationFunction='Default', Items=(
+      [BUSINESS ITEM] (Name='Propietario', Definition=Repositorios.Propietario, Guid='gqmVNGAx', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Nombre repositorio', Definition=Repositorios.NombreRepositorio, Guid='emqXFbaA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Repositorio', Definition=Repositorios.Repositorio, Guid='SzzsnfTb', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Rama principal', Definition=Repositorios.RamaPrincipal, Guid='gstoavfw', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Es privado', Definition=Repositorios.EsPrivado, Guid='aPNvwWZz', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Mb', Definition=Repositorios.Mb, Guid='rUkfXPFg', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Tiene issues', Definition=Repositorios.TieneIssues, Guid='cXjObcFq', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Boolean', Items=()),
+      [BUSINESS ITEM] (Name='Tienediscussions', Definition=Repositorios.Tienediscussions, Guid='oftejMdk', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Boolean', Items=()),
+      [BUSINESS ITEM] (Name='Url', Definition=Repositorios.Url, Guid='tyTKfFjc', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Fecha creacion', Definition=Repositorios.FechaCreacion, Guid='qMlOksmI', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTimeOffset', Items=()),
+      [BUSINESS ITEM] (Name='Fecha actualización', Definition=Repositorios.FechaActualizacion, Guid='JKTnMTTj', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTimeOffset', Items=())
+    )),
+    [BUSINESS ITEM] (Name='Issues', Guid='BftBfYWn', AggregationFunction='Default', Items=(
+      [BUSINESS ITEM] (Name='Número issue', Definition=Issues.NumeroIssue, Guid='gxJqypkK', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Id repositorio', Definition=Issues.IdRepositorio, Guid='RtqOACuu', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Issue', Definition=Issues.Issue, Guid='mvEPqydW', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Usuario creador', Definition=Issues.UsuarioCreador, Guid='hGNDWQbR', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Número comentarios', Definition=Issues.NumeroComentarios, Guid='Erwgjpzl', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Fecha creacion issue', Definition=Issues.FechaCreacionIssue, Guid='tRTuqzAj', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTimeOffset', Items=()),
+      [BUSINESS ITEM] (Name='Fecha actualización issue', Definition=Issues.FechaActualizacionIssue, Guid='mnDlPDYX', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTimeOffset', Items=()),
+      [BUSINESS ITEM] (Name='Bloqueado', Definition=Issues.Bloqueado, Guid='ztFhXyOC', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Estado', Definition=Issues.Estado, Guid='AjahLahV', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Url', Definition=Issues.Url, Guid='ZHHkqTek', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Issues', Definition=EXPRESSION (count(Issues.IdIssue)), Guid='jEbQbuEb', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=()),
+      [BUSINESS ITEM] (Name='Comentarios', Guid='OJIUKEsG', AggregationFunction='Default', Items=(
+        [BUSINESS ITEM] (Name='Código comentario', Definition=Comentarios.CodigoComentario, Guid='aCKAVSHE', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Decimal', Items=()),
+        [BUSINESS ITEM] (Name='Autor', Definition=Comentarios.Autor, Guid='VilWsFwt', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+        [BUSINESS ITEM] (Name='Fecha', Definition=Comentarios.Fecha, Guid='HIGTrlpb', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Items=()),
+        [BUSINESS ITEM] (Name='Fecha hora creacion', Definition=Comentarios.FechaHoraCreacion, Guid='RCSCJQOQ', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Items=()),
+        [BUSINESS ITEM] (Name='Fecha hora actualización', Definition=Comentarios.FechaHoraActualizacion, Guid='hSmaTxEy', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Items=()),
+        [BUSINESS ITEM] (Name='Url', Definition=Comentarios.Url, Guid='QUtPlwQe', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+        [BUSINESS ITEM] (Name='Comentarios', Definition=EXPRESSION (count(Comentarios.IdComentario)), Guid='pXZHTbWK', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=())
+      ))
+    ))
+  ),
+  TableFilter='*',
+  DefaultLanguage='es',
+  TranslateAllOnSaving=NO,
+  TablesSortMode='TableAlias',
+  AvoidRepeatTablesOnDiagrams=NO
+)
