@@ -1,0 +1,11 @@
+﻿
+
+WORKFLOW 'Carga Github' (
+	FILE '../Tables/stg.Repositories.sql',
+	FILE '../Tables/stg.Branches.sql',
+	FILE '../Tables/stg.Issues.sql',
+	FILE '../Tables/stg.Comments.sql',
+	FILE '../Tables/stg.Commits.sql',
+	FILE '../Tables/stg.TreeItems.sql',
+	FILE '../Tables/stg.Blobs.sql'
+)
