@@ -3,9 +3,9 @@ CREATE OR REPLACE PROCEDURE
 MERGE UPSERT dwh.Comentarios(IdComentario)
 select 
 	comments.CommentId			#CodigoComentario,
-	Issues.IdIssue				IdIssue NOT NULL NONUNIQUE REFERENCES dwh.Issues,
+	Issues.IdIssue				IdIssue NOT NULL NONUNIQUE REFERENCES dwh.Issues ON DELETE CASCADE,
 	comments.Author				Autor,
-	comments.[Date]				Fecha,
+	comments.[Date]				Fecha date NOT NULL NONUNIQUE REFERENCES dwh.Fechas,
 	comments.CreationDate		FechaHoraCreacion,
 	comments.UpdatedDate		FechaHoraActualizacion,
 	comments.Url

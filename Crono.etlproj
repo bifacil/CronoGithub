@@ -16,7 +16,7 @@
   ExcludedFiles=(),
   StrategiesFileName='Procedures\Strategies.sql',
   JobsFolderPath='Jobs',
-  MaxRows=100000,
+  MaxRows=10000,
   AllowSaveWithErrors=NO,
   TableFilter='*',
   ProceduresViewMode='Workflow',

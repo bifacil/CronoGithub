@@ -7,7 +7,7 @@ select
 	issues.IssueNumber					#NumeroIssue,
 	Repositorios.IdRepositorio			IdRepositorio int NOT NULL NONUNIQUE REFERENCES dwh.Repositorios,
 	issues.Title						Issue,
-	issues.[User]						UsuarioCreador,
+	issues.[User]						UsuarioCreador varchar(50),
 	issues.Comments						NumeroComentarios,
 	issues.CreatedAt					FechaCreacionIssue,
 	issues.UpdatedAt					FechaActualizacionIssue,

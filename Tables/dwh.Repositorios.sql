@@ -2,15 +2,20 @@
 CREATE OR REPLACE PROCEDURE
 MERGE CLONE dwh.Repositorios(IdRepositorio)
 select 
-	RepositoryOwner							#Propietario,
-	RepositoryName							#NombreRepositorio,		
-	FullName								Repositorio,
-	DefaultBranch							RamaPrincipal,
-	if(Private=1,'Privado','Publico')		EsPrivado,
-	Size/1024								Mb,
-	HasIssues								TieneIssues,
-	HasDiscussions							Tienediscussions,
-	HtmlUrl									Url,			
-	CreatedAt								FechaCreacion,
-	UpdatedAt								FechaActualizacion
-from stg.Repositories
+	repo.RepositoryOwner								#Propietario,
+	repo.RepositoryName									#NombreRepositorio,		
+	repo.FullName										Repositorio,
+	if(CsvClientes.FullName is not null,'Cliente')		EsCliente,
+	repo.DefaultBranch									RamaPrincipal,
+	if(repo.Private=1,'Privado','Publico')				EsPrivado,
+	repo.Size/1024										Mb,
+	repo.HasIssues										TieneIssues,
+	repo.HasDiscussions									Tienediscussions,
+	repo.HtmlUrl										Url,			
+	repo.CreatedAt										FechaCreacion,
+	repo.UpdatedAt										FechaActualizacion,
+	if(RepositoryCustomProperties.Value='true')     	ReadCommits
+from stg.Repositories repo
+left join stg.RepositoryCustomProperties filter (PropertyName='ReadCommits') using (RepositoryOwner, RepositoryName)
+left join stg.CsvClientes using (FullName)
+check snowflake

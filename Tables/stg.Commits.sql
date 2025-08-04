@@ -17,7 +17,13 @@ from Github$Commits(
 	DATA=(
 		select RepositoryName,RepositoryOwner 
 		from stg.Repositories
-		where repositoryName='CronoETL'
+		semi join (
+			select RepositoryName,RepositoryOwner
+			from stg.RepositoryTopics
+			where Topic='commits'		
+		) using (RepositoryName,RepositoryOwner)
 	)
 ) materialize into stg.tmp_Commits Commits
+
+
 

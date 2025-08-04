@@ -1,8 +1,13 @@
 ﻿
 
 WORKFLOW 'Carga Github' (
+	WORKFLOW 'Vistas' (
+		FILE '/Tables/stg.CsvClientes.sql'
+	),
 	WORKFLOW 'Staging' (
 		FILE '/Tables/stg.Repositories.sql',
+		FILE '/Tables/stg.RepositoryCustomProperties.sql',
+		FILE '/Tables/stg.RepositoryTopics.sql',
 		FILE '/Tables/stg.Branches.sql',
 		FILE '/Tables/stg.Issues.sql',
 		FILE '/Tables/stg.Comments.sql',
@@ -11,9 +16,12 @@ WORKFLOW 'Carga Github' (
 		FILE '/Tables/stg.Blobs.sql'	
 	),
 	WORKFLOW 'dwh' (
+		dwh.Fechas,
 		dwh.Repositorios,
 		dwh.Issues,
-		dwh.Comentarios
+		dwh.Comentarios,
+		dwh.Commits,
+		dwh.Dedicacion
 	)
 	
 )

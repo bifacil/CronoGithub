@@ -12,7 +12,6 @@ select
 from Github$TreeItems(
 	UseMirror=YES,
 	[Limit]=20000,
-	sha='bafdcbef2cdaed587f592354248dd707f4a94b34',
 	DATA=(
 		select top 1 over (partition by RepositoryOwner,RepositoryName order by date desc) RepositoryName,RepositoryOwner ,Sha,[date]
 		from stg.Commits

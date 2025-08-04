@@ -1,0 +1,332 @@
+﻿REPORT (
+  Guid='clKtdzxB',
+  IsReadOnly=NO,
+  CatalogDefinition=
+    [CATALOG DEFINITION] (
+      Name='CronoGithub',
+      Guid='WjWxVPGqTb',
+      FileName='CronoGithub.metadata',
+      Location=FILE '{git:CronoGithub}\CronoGithub.metadata'
+    ),
+  CatalogGuid='WjWxVPGqTb',
+  Reports=(
+    [PANEL REPORT] (
+      Name='Informe 1',
+      IsVisible=YES,
+      ReportPredicates=(
+        [QUERY PREDICATE] (SheetFilterMode='NotGlobal', SheetsFiltered=('jdmjSAFJ'), EditView='SimpleSelection', LeftPart=[Es cliente|thwrcfld], Operator='Equal', Expressions=('Cliente'))
+      ),
+      Sheets=(
+        SHEET (
+          Guid='jdmjSAFJ',
+          Name='Hoja 1',
+          Layout=
+            LAYOUT (
+              ItemHeight='*',
+              Items=(
+                LAYOUT (
+                  ItemHeight='*',
+                  Items=(),
+                  ItemWidth='0.74421*',
+                  IsVisible=YES,
+                  Orientation='Terminal',
+                  DataPanel=
+                    PANEL (
+                      Guid='HlqrnPsT',
+                      PanelQuery=
+                        QUERY (
+                          [Columns]=(
+                            [QUERY COLUMN] (Alias='Repositorio', [Expression]=EXPRESSION ([Repositorio|emqXFbaA]), IsMeasure=NO, IsHierarchyLevel=YES),
+                            [QUERY COLUMN] (Alias='Issues abiertos', [Expression]=EXPRESSION ([Issues abiertos|YjjsJogk])),
+                            [QUERY COLUMN] (Alias='Issues', [Expression]=EXPRESSION ([Issues|jEbQbuEb])),
+                            [QUERY COLUMN] (Alias='Fecha último comentario', [Expression]=EXPRESSION ([Fecha último comentario|WZlNDkMk])),
+                            [QUERY COLUMN] (Alias='Comentarios', [Expression]=EXPRESSION ([Comentarios|pXZHTbWK])),
+                            [QUERY COLUMN] (Alias='Tareas realizadas', [Expression]=EXPRESSION ([Tareas realizadas|LgNIFuVu]), [Order]=0, OrderMode='Desc')
+                          ),
+                          IsSelectAll=YES
+                        ),
+                      Type='Table',
+                      LockQuery=NO,
+                      ShowFilters=NO,
+                      AllowMoveColumns=YES,
+                      IsSelectionRequired=NO,
+                      GridFormat='H4sIAAAAAAAACu1ZzW7aQBC-V-o7WG6PETF_kVqBpZSUFCnQCEjS64InsOraY-2uQ92qL9YeeugD9RW6a35EginGMSap4ICE8Tf7zeznmZ3xn5-_ap8kJz3glDD6FbhxB1xQ9OpmsWCZBvF9RodERlfOOXUa6EmOzLRfvjCMms_RBy5DwyMu1M1XFyTEQF5PTZgGFV7AWN2UPADTOI7FvF62qhCfIZwD7ggLIGbZVSNXApoUmNNRv5rI5-5EvE1bW6sdzyFrTJxzDPwGBp40bSvZ3b3AdQkP41lX51xXwS0JbvFhdJZtLJCr2Nma_dBXt0V0V7jGwU4ZHXkuaOe6dDSOA8VdiiFeyoR4ICS6iZgv9tW0W0IEIBKhzqjwGQmVFlyifP5mve1Y39M7Xd6f0w3U20Y4xb14Xtn3dhtkQNX_-_G-uj_v-4QDEYb60onMITv2f2PG6yGXLe8W47NdcTfZ7tHx0Kw_cge4aZ-BGILnUG-UCNkGPoIbKseXHO4oBiJK-aZ9S5iATCLaQBa4nogP6MluAqpraRcncSVuQ_y74KOgElUiSgS98gaqOjlnRBL9GERGZkeAeMApYzhpAGNR5NcHehX5AYjeYUOqddSWh0IFqNCTXG319rynxvqIrE_9-CNMPPCaCjpg0PIc-JI0vqdDGRB2Qx05Nu0O6eRfltMLIk16fiqiSMM9I2EUcxZGeU_CeIZ6yFMGpZxlUMldBk0Yjonx-weT1EVjuDjGPithPMqJjKRSzlkq1dylsm2P81TUsS3vjARRyVkQJ7kLIt1h_6nIIh37jMRR3Zk4NjY01xQmiaSSdh9WFBO1uWo26FA96VvTSlnL4XtoogMTLXEl00vdJkTzwg56SVZfngHO-u42Oop-NGx7F876uwSWIv_faye0fJJ6P7XfGCMK4D1JJKR8Ti9wOuFVpcYqFSrW0qd8VHpTLZwk67XV_FgdbErWUalqZSKoPkrCDlPWw5T1MGVd88gdpqz_15S13b1qUibVC7SNtWwt9IIKuTV6uZj9e9S7MHLPmdrx_feI9l8OcnZ4WxwAAA',
+                      AllowPropagateFilters=YES,
+                      TableOptions=
+                        [TABLE OPTIONS] (
+                          Appearance=APPEARANCE (),
+                          SearchOptions=
+                            [SEARCH PANEL] (
+                              SearchPanelVisible=NO,
+                              Text='Búsqueda...',
+                              Width=240,
+                              AllowColumnFiltering=YES,
+                              AllowColumnSearch=YES
+                            )
+                        ),
+                      TableCellMerge=NO,
+                      ShowGroupbox=NO,
+                      ShowHeaders=YES,
+                      ShowRowHeaders=NO,
+                      ChartOptions=
+                        [CHART OPTIONS] (
+                          Legend=LEGEND (Visible=YES),
+                          Appearance=
+                            [CHART APPEARANCE] (
+                              Palette='Office'
+                            )
+                        ),
+                      GaugeMaxValue=100,
+                      GaugeMinValue=0,
+                      GaugeStyleType='Default',
+                      GaugeFlipColors=NO,
+                      MapShowScale=NO,
+                      MapShowNavigationControls=NO,
+                      MapShowCoordinates=NO,
+                      MapShapeNumSteps=8,
+                      MapShapeNumColors=1,
+                      MapCircleCalculateSizeFromIndicator=YES,
+                      RangeChartType='Area',
+                      DataInputAllowInsert=NO,
+                      DataInputAllowDelete=NO
+                    )
+                ),
+                LAYOUT (
+                  ItemHeight='*',
+                  Items=(
+                    LAYOUT (
+                      Name='Issues',
+                      ItemHeight='*',
+                      Items=(
+                        LAYOUT (
+                          ItemHeight='*',
+                          Items=(),
+                          ItemWidth='1.25579*',
+                          IsVisible=YES,
+                          Orientation='Terminal',
+                          DataPanel=
+                            PANEL (
+                              Guid='gIkNCWRF',
+                              PanelQuery=
+                                QUERY (
+                                  [Columns]=(
+                                    [QUERY COLUMN] (Alias='Issue', [Expression]=EXPRESSION ([Issue|mvEPqydW]), IsMeasure=NO, IsHierarchyLevel=YES),
+                                    [QUERY COLUMN] (Alias='Fecha actualización issue', [Expression]=EXPRESSION ([Fecha actualización issue|mnDlPDYX]), Format=[DATETIME FORMAT] (StringFormat='g'), IsMeasure=NO, [Order]=0, OrderMode='Desc', IsHierarchyLevel=YES),
+                                    [QUERY COLUMN] (Alias='Fecha último comentario', [Expression]=EXPRESSION ([Fecha último comentario|WZlNDkMk]))
+                                  ),
+                                  IsSelectAll=YES
+                                ),
+                              Type='Table',
+                              LockQuery=NO,
+                              ShowFilters=NO,
+                              AllowMoveColumns=YES,
+                              IsSelectionRequired=NO,
+                              GridFormat='H4sIAAAAAAAACuWXz27aQBDG75X6Dta2xwhsokg5gKUUSooENMJAet3YE1h1vWPtrqHua-XWHnrIA_UVujZ_RGJTHEJoq3Iz8jc7881vvbM_v_-of9KSeiAZ5ewrSGsGUjEUDeJUbGLRKOLMpzr751KyoIlCS-TEff3KsuqRxAikTixBQ2iQN12aYKzHixDEYkrEnDeIljEQq1qoebsZ1Sg-Q7ISzCiPoWDZfJCRgjYDHvTNUxvlqpwsb-Km0erVlWRLiEuJcdTEWGji2uXe9uIwpDIpztpZ5ZoXdzSEzmN3NmOslXntcs1hEpnXsnRzuRbJLjibiBDS4gZsMi0S5WveZYKHUnfELR7VgHWfidsGf0ot6us4a7bP7u-ECaMKur0t_Y8yAEncFigfRMDEpJSyB3IC10xPryTMGMYqw4G4t5QrOIi1TeRxKFSxs6cv42y6zwY4L8J_RyM6pT0fiRvDbNCimqYIZ_Llh2EbuBznTeA883y7xXnlB6Bpby1t1jHNTpSxpuJpaZr8lIwXYYaIfMii4k9asXDMFLvh0BEBfCnr6UXG8jUL9JS4fdovw1IxBLWjQ_DM3fi3kPHMMg6Ei3NkXE7_EC7337hmIVo-pocTlQz_QVj2LOJAqNReDJWdp9SYwbwUOPu2I8cPypBqMwwGLB3ttpyP9qZ9j0P0YZ4Cb6C9QpVFMX6gKLP65tDXYiriNOlhYNLPpqt3yfLQLhEpq_99WkRKUdnqF_GbU0QF0tNUw567touLkZ64Z2e1yvmJ49iVc3vjV-7z45kLg-GvZp_UzuyDADVETfn_Plb3BqM249pconbivVXaZUo_Wb3J9-9n-3WQB8XUqw_vku4vRJ4Apl8OAAA',
+                              AllowPropagateFilters=YES,
+                              TableOptions=
+                                [TABLE OPTIONS] (
+                                  Appearance=APPEARANCE (),
+                                  SearchOptions=
+                                    [SEARCH PANEL] (
+                                      SearchPanelVisible=NO,
+                                      Text='Búsqueda...',
+                                      Width=240,
+                                      AllowColumnFiltering=YES,
+                                      AllowColumnSearch=YES
+                                    )
+                                ),
+                              TableCellMerge=NO,
+                              ShowGroupbox=NO,
+                              ShowHeaders=YES,
+                              ShowRowHeaders=NO,
+                              ChartOptions=
+                                [CHART OPTIONS] (
+                                  Legend=LEGEND (Visible=YES),
+                                  Appearance=
+                                    [CHART APPEARANCE] (
+                                      Palette='Office'
+                                    )
+                                ),
+                              GaugeMaxValue=100,
+                              GaugeMinValue=0,
+                              GaugeStyleType='Default',
+                              GaugeFlipColors=NO,
+                              MapShowScale=NO,
+                              MapShowNavigationControls=NO,
+                              MapShowCoordinates=NO,
+                              MapShapeNumSteps=8,
+                              MapShapeNumColors=1,
+                              MapCircleCalculateSizeFromIndicator=YES,
+                              RangeChartType='Area',
+                              DataInputAllowInsert=NO,
+                              DataInputAllowDelete=NO
+                            )
+                        )
+                      ),
+                      ItemWidth='*',
+                      IsVisible=NO,
+                      Orientation='Horitzontal'
+                    ),
+                    LAYOUT (
+                      Name='Comentarios',
+                      ItemHeight='*',
+                      Items=(
+                        LAYOUT (
+                          ItemHeight='*',
+                          Items=(
+                            LAYOUT (
+                              ItemHeight='*',
+                              Items=(),
+                              ItemWidth='*',
+                              IsVisible=YES,
+                              Orientation='Terminal',
+                              DataPanel=
+                                PANEL (
+                                  Guid='aZENXCqg',
+                                  PanelQuery=
+                                    QUERY (
+                                      [Columns]=(
+                                        [QUERY COLUMN] (Alias='Tipo dedicación', [Expression]=EXPRESSION ([Tipo dedicación|UeIhuCUQ]), IsMeasure=NO, [Order]=0, OrderMode='Asc', IsHierarchyLevel=YES),
+                                        [QUERY COLUMN] (Alias='Tareas realizadas', [Expression]=EXPRESSION ([Tareas realizadas|LgNIFuVu]))
+                                      )
+                                    ),
+                                  Type='Table',
+                                  LockQuery=NO,
+                                  ShowFilters=NO,
+                                  AllowMoveColumns=YES,
+                                  IsSelectionRequired=NO,
+                                  AllowPropagateFilters=YES,
+                                  TableOptions=
+                                    [TABLE OPTIONS] (
+                                      Appearance=APPEARANCE (),
+                                      SearchOptions=
+                                        [SEARCH PANEL] (
+                                          SearchPanelVisible=NO,
+                                          Text='Búsqueda...',
+                                          Width=240,
+                                          AllowColumnFiltering=YES,
+                                          AllowColumnSearch=YES
+                                        )
+                                    ),
+                                  TableCellMerge=NO,
+                                  ShowGroupbox=NO,
+                                  ShowHeaders=YES,
+                                  ShowRowHeaders=NO,
+                                  ChartOptions=
+                                    [CHART OPTIONS] (
+                                      Legend=LEGEND (Visible=YES),
+                                      Appearance=
+                                        [CHART APPEARANCE] (
+                                          Palette='Office'
+                                        )
+                                    ),
+                                  GaugeMaxValue=100,
+                                  GaugeMinValue=0,
+                                  GaugeStyleType='Default',
+                                  GaugeFlipColors=NO,
+                                  MapShowScale=NO,
+                                  MapShowNavigationControls=NO,
+                                  MapShowCoordinates=NO,
+                                  MapShapeNumSteps=8,
+                                  MapShapeNumColors=1,
+                                  MapCircleCalculateSizeFromIndicator=YES,
+                                  RangeChartType='Area',
+                                  DataInputAllowInsert=NO,
+                                  DataInputAllowDelete=NO
+                                )
+                            ),
+                            LAYOUT (
+                              ItemHeight='*',
+                              Items=(),
+                              ItemWidth='*',
+                              IsVisible=YES,
+                              Orientation='Terminal',
+                              DataPanel=
+                                PANEL (
+                                  Guid='KiHEocEy',
+                                  PanelQuery=
+                                    QUERY (
+                                      [Columns]=(
+                                        [QUERY COLUMN] (Alias='Mes', [Expression]=EXPRESSION ([Mes|DLPFNbiR]), IsMeasure=NO, [Order]=0, OrderMode='Asc', IsHierarchyLevel=YES),
+                                        [QUERY COLUMN] (Alias='Tareas realizadas', [Expression]=EXPRESSION ([Tareas realizadas|LgNIFuVu]))
+                                      )
+                                    ),
+                                  Type='Table',
+                                  LockQuery=NO,
+                                  ShowFilters=NO,
+                                  AllowMoveColumns=YES,
+                                  IsSelectionRequired=NO,
+                                  GridFormat='H4sIAAAAAAAACuWV0UrDMBSG7wXfoUQvx9YVpw62glY3BtuQVYe3wR1rMM0pSbpRX80LH8lXMO2sVFOxE-_sXUu-P-c_-XP6-vwyuNWShiAZ5ewJpLMGqRiKIem2XeLQJOHsjuriy1iyVYBCS-TE399znEEiMQGpM0fQGIbkYEozTPVyK0EcpkTK-ZBomQJxOrXMYVXVEI-QlcCa8hRqtrVFbhSMGPDV3LyNUJZ2irqJn6sNOiXyjcRYYpoEmApNfLfZ6jCNYyqz-qq7Za02PNEQd792p6rxQdrs-57XWWKWFeVatdZhZ5xFIobc3IJFD3WQ7fmnJoQo9UTcY30D3PLEbTBAnsZC7cwtGWwa9c22z3ETAOczkJFZd0-5siNhcyZLMdUmfCuWR-nnim2JOWzy817g5gpVoUL8OYomu1dDdsFUwmk2w5UpvzjN8-y9jQ2UCv-XuQkRNXe_1Q8eEBXIUFMNvwztFLcjhPhHp0ftk37l6bW8fq993CjEoRlQxPc8t-X13D9J8DVqyv_7NZ4tbkaMazO0d76QH-iUKb0zXc13w1nyycyg8_nf5b8BOy276s8GAAA',
+                                  AllowPropagateFilters=YES,
+                                  TableOptions=
+                                    [TABLE OPTIONS] (
+                                      Appearance=APPEARANCE (),
+                                      SearchOptions=
+                                        [SEARCH PANEL] (
+                                          SearchPanelVisible=NO,
+                                          Text='Búsqueda...',
+                                          Width=240,
+                                          AllowColumnFiltering=YES,
+                                          AllowColumnSearch=YES
+                                        )
+                                    ),
+                                  TableCellMerge=NO,
+                                  ShowGroupbox=NO,
+                                  ShowHeaders=YES,
+                                  ShowRowHeaders=NO,
+                                  ChartOptions=
+                                    [CHART OPTIONS] (
+                                      Legend=LEGEND (Visible=YES),
+                                      Appearance=
+                                        [CHART APPEARANCE] (
+                                          Palette='Office'
+                                        )
+                                    ),
+                                  GaugeMaxValue=100,
+                                  GaugeMinValue=0,
+                                  GaugeStyleType='Default',
+                                  GaugeFlipColors=NO,
+                                  MapShowScale=NO,
+                                  MapShowNavigationControls=NO,
+                                  MapShowCoordinates=NO,
+                                  MapShapeNumSteps=8,
+                                  MapShapeNumColors=1,
+                                  MapCircleCalculateSizeFromIndicator=YES,
+                                  RangeChartType='Area',
+                                  DataInputAllowInsert=NO,
+                                  DataInputAllowDelete=NO
+                                )
+                            )
+                          ),
+                          ItemWidth='*',
+                          IsVisible=YES,
+                          Orientation='Vertical'
+                        )
+                      ),
+                      ItemWidth='*',
+                      IsVisible=YES,
+                      Orientation='Horitzontal'
+                    )
+                  ),
+                  ItemWidth='*',
+                  IsVisible=YES,
+                  Orientation='Sheet'
+                )
+              ),
+              ItemWidth='*',
+              IsVisible=YES,
+              Orientation='Horitzontal'
+            ),
+          IsVisible=YES,
+          PropagationMode='LeftToRight'
+        )
+      )
+    )
+  ),
+  Parameters=(),
+  ConnectionMode='Default',
+  ShowCatalog=YES,
+  ShowSheetsInReportExplorer=NO,
+  AllowDataInput=NO,
+  DefaultChartPalete='Office'
+)

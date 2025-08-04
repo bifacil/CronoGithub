@@ -15,11 +15,15 @@ select
 	State,
 	Url
 from Github$Issues(
---	[Limit]=50,
 	DATA=(
-		select RepositoryName,RepositoryOwner
-		from stg.Repositories
-		where HasIssues=YES 
+		/* Se descargan los issues que se han modificado desde la última extracción*/
+		select r.RepositoryName,r.RepositoryOwner,Since
+		from stg.Repositories filter (HasIssues=YES) r
+		left join (
+			select Propietario RepositoryOwner, NombreRepositorio RepositoryName,date(max(FechaActualizacionIssue)) Since
+			from dwh.Issues
+		) using (RepositoryName,RepositoryOwner)
 	)
 )
+
 
