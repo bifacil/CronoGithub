@@ -1,4 +1,6 @@
-﻿
+---
+JobName: Carga CronoGithub
+---
 
 WORKFLOW 'Carga Github' (
 	WORKFLOW 'Vistas' (
