@@ -11,11 +11,23 @@
       Datasource=[SQL SERVER CONNECTION] ([Server]='.', DatabaseName='DB11_DESA'),
       BackgroundColor=COLOR (Name='White'),
       IsDefault=NO
+    ),
+    ENVIRONMENT (
+      Name='CALENDAS',
+      Datasource=[SQL SERVER CONNECTION] ([Server]='calendas.dwh.es', DatabaseName='DB05', Username='db05', Password=[ENCRYPTED TEXT] ([Data]='5zveYW8LoN0Ysjp0dznRIQCnWDHfl0xvhWWoX9wdY4Y=')),
+      BackgroundColor=COLOR (Name='White'),
+      IsDefault=NO
+    ),
+    ENVIRONMENT (
+      Name='CALENDAS_TESTS',
+      Datasource=[SQL SERVER CONNECTION] ([Server]='(localdb)\v11.0', DatabaseName='CALENDAS_TEST'),
+      BackgroundColor=COLOR (Name='White'),
+      IsDefault=NO
     )
   ),
   ExcludedFiles=(),
-  StrategiesFileName='Procedures\Strategies.sql',
   JobsFolderPath='Jobs',
+  DeclareLocations=('Procedures\Strategies.sql', 'borrame.sql'),
   MaxRows=10000,
   AllowSaveWithErrors=NO,
   TableFilter='*',

@@ -4,7 +4,9 @@ JobName: Carga CronoGithub
 
 WORKFLOW 'Carga Github' (
 	WORKFLOW 'Vistas' (
-		FILE '/Tables/stg.CsvClientes.sql'
+		FILE '/Tables/stg.Clientes.sql',
+		FILE '/Tables/stg.Emails.sql',
+		FILE '/Tables/stg.GithubUsers.sql'
 	),
 	WORKFLOW 'Staging' (
 		FILE '/Tables/stg.Repositories.sql',
@@ -18,12 +20,14 @@ WORKFLOW 'Carga Github' (
 		FILE '/Tables/stg.Blobs.sql'	
 	),
 	WORKFLOW 'dwh' (
+		dwh.Usuarios,
 		dwh.Fechas,
 		dwh.Repositorios,
 		dwh.Issues,
 		dwh.Comentarios,
 		dwh.Commits,
-		dwh.Dedicacion
+		dwh.Dedicacion,
+		DB05.calendas.Dedication
 	)
 	
 )

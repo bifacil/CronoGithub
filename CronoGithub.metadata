@@ -7,18 +7,23 @@
       [TABLE COLUMN] (Name='IdComentario', DataType='int', IsNullable=NO, IsIdentity=YES),
       [TABLE COLUMN] (Name='CodigoComentario', DataType='decimal(10,0)', IsNullable=NO),
       [TABLE COLUMN] (Name='IdIssue', DataType='int', IsNullable=NO),
-      [TABLE COLUMN] (Name='Autor', DataType='varchar(15)', IsNullable=NO),
-      [TABLE COLUMN] (Name='Fecha', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='Autor', DataType='varchar(20)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Fecha', DataType='date', IsNullable=NO),
       [TABLE COLUMN] (Name='FechaHoraCreacion', DataType='datetime', IsNullable=YES),
       [TABLE COLUMN] (Name='FechaHoraActualizacion', DataType='datetime', IsNullable=YES),
-      [TABLE COLUMN] (Name='Url', DataType='varchar(80)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Url', DataType='varchar(86)', IsNullable=NO),
       [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
-      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='IdUsuario', DataType='int', IsNullable=YES)
     ), ForeignKeys=(
-      [FOREIGN KEY] (Name='FK dwh.Comentarios(IdIssue) dwh.Issues', IsNullable=NO, ColumnNames=('IdIssue'), ReferencedTableName='dwh.Issues', ReferencedColumnNames=('IdIssue'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+      [FOREIGN KEY] (Name='FK dwh.Comentarios(Fecha) dwh.Fechas', IsNullable=NO, ColumnNames=('Fecha'), ReferencedTableName='dwh.Fechas', ReferencedColumnNames=('Fecha'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK dwh.Comentarios(IdIssue) dwh.Issues', IsNullable=NO, ColumnNames=('IdIssue'), ReferencedTableName='dwh.Issues', ReferencedColumnNames=('IdIssue'), UpdateRule='NO ACTION', DeleteRule='CASCADE'),
+      [FOREIGN KEY] (Name='FK dwh.Comentarios(IdUsuario) dwh.Usuarios', IsNullable=YES, ColumnNames=('IdUsuario'), ReferencedTableName='dwh.Usuarios', ReferencedColumnNames=('IdUsuario'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Comentarios', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='CodigoComentario', ColumnsCount=1, ConstraintName='BK_Comentarios'),
+      [TABLE INDEX] (Name='INDEX dwh.Comentarios Fecha', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='Fecha', ColumnsCount=1),
       [TABLE INDEX] (Name='INDEX dwh.Comentarios IdIssue', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='IdIssue', ColumnsCount=1),
+      [TABLE INDEX] (Name='INDEX dwh.Comentarios IdUsuario', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='IdUsuario', ColumnsCount=1),
       [TABLE INDEX] (Name='PK_Comentarios', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Comentarios', [Column]='IdComentario', ColumnsCount=1, ConstraintName='PK_Comentarios')
     )),
     [TABLE] (TableAlias='Commits', TableName='dwh.Commits', PkColumns=('IdCommit'), TableColumns=(
@@ -26,20 +31,23 @@
       [TABLE COLUMN] (Name='Sha', DataType='varchar(100)', IsNullable=NO),
       [TABLE COLUMN] (Name='IdRepositorio', DataType='int', IsNullable=NO),
       [TABLE COLUMN] (Name='Fecha', DataType='date', IsNullable=NO),
-      [TABLE COLUMN] (Name='Autor', DataType='nvarchar(50)', IsNullable=YES),
-      [TABLE COLUMN] (Name='Email', DataType='nvarchar(100)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Autor', DataType='varchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Email', DataType='varchar(50)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Url', DataType='varchar(164)', IsNullable=NO),
       [TABLE COLUMN] (Name='Mensaje', DataType='nvarchar(1000)', IsNullable=YES),
       [TABLE COLUMN] (Name='Hashtags', DataType='nvarchar(50)', IsNullable=YES),
       [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
       [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
-      [TABLE COLUMN] (Name='Url', DataType='varchar(164)', IsNullable=NO)
+      [TABLE COLUMN] (Name='IdUsuario', DataType='int', IsNullable=YES)
     ), ForeignKeys=(
       [FOREIGN KEY] (Name='FK dwh.Commits(Fecha) dwh.Fechas', IsNullable=NO, ColumnNames=('Fecha'), ReferencedTableName='dwh.Fechas', ReferencedColumnNames=('Fecha'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
-      [FOREIGN KEY] (Name='FK dwh.Commits(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+      [FOREIGN KEY] (Name='FK dwh.Commits(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK dwh.Commits(IdUsuario) dwh.Usuarios', IsNullable=YES, ColumnNames=('IdUsuario'), ReferencedTableName='dwh.Usuarios', ReferencedColumnNames=('IdUsuario'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Commits', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Commits', [Column]='Sha', ColumnsCount=1, ConstraintName='BK_Commits'),
       [TABLE INDEX] (Name='INDEX dwh.Commits Fecha', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Commits', [Column]='Fecha', ColumnsCount=1),
       [TABLE INDEX] (Name='INDEX dwh.Commits IdRepositorio', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Commits', [Column]='IdRepositorio', ColumnsCount=1),
+      [TABLE INDEX] (Name='INDEX dwh.Commits IdUsuario', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Commits', [Column]='IdUsuario', ColumnsCount=1),
       [TABLE INDEX] (Name='PK_Commits', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Commits', [Column]='IdCommit', ColumnsCount=1, ConstraintName='PK_Commits')
     )),
     [TABLE] (TableAlias='Dedicacion', TableName='dwh.Dedicacion', PkColumns=('IdDedicacion'), TableColumns=(
@@ -48,17 +56,22 @@
       [TABLE COLUMN] (Name='CodigoDedicacion', DataType='varchar(50)', IsNullable=YES),
       [TABLE COLUMN] (Name='IdRepositorio', DataType='int', IsNullable=NO),
       [TABLE COLUMN] (Name='Fecha', DataType='date', IsNullable=NO),
+      [TABLE COLUMN] (Name='Autor', DataType='varchar(50)', IsNullable=NO),
       [TABLE COLUMN] (Name='Url', DataType='varchar(164)', IsNullable=YES),
       [TABLE COLUMN] (Name='Mensaje', DataType='nvarchar(1000)', IsNullable=YES),
       [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
-      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES),
+      [TABLE COLUMN] (Name='IdUsuario', DataType='int', IsNullable=YES),
+      [TABLE COLUMN] (Name='Email', DataType='varchar(50)', IsNullable=YES)
     ), ForeignKeys=(
       [FOREIGN KEY] (Name='FK dwh.Dedicacion(Fecha) dwh.Fechas', IsNullable=NO, ColumnNames=('Fecha'), ReferencedTableName='dwh.Fechas', ReferencedColumnNames=('Fecha'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
-      [FOREIGN KEY] (Name='FK dwh.Dedicacion(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
+      [FOREIGN KEY] (Name='FK dwh.Dedicacion(IdRepositorio) dwh.Repositorios', IsNullable=NO, ColumnNames=('IdRepositorio'), ReferencedTableName='dwh.Repositorios', ReferencedColumnNames=('IdRepositorio'), UpdateRule='NO ACTION', DeleteRule='NO ACTION'),
+      [FOREIGN KEY] (Name='FK dwh.Dedicacion(IdUsuario) dwh.Usuarios', IsNullable=YES, ColumnNames=('IdUsuario'), ReferencedTableName='dwh.Usuarios', ReferencedColumnNames=('IdUsuario'), UpdateRule='NO ACTION', DeleteRule='NO ACTION')
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Dedicacion', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Dedicacion', ColumnsCount=2, ConstraintName='BK_Dedicacion'),
       [TABLE INDEX] (Name='INDEX dwh.Dedicacion Fecha', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Dedicacion', [Column]='Fecha', ColumnsCount=1),
       [TABLE INDEX] (Name='INDEX dwh.Dedicacion IdRepositorio', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Dedicacion', [Column]='IdRepositorio', ColumnsCount=1),
+      [TABLE INDEX] (Name='INDEX dwh.Dedicacion IdUsuario', IsClustered=NO, IsUnique=NO, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Dedicacion', [Column]='IdUsuario', ColumnsCount=1),
       [TABLE INDEX] (Name='PK_Dedicacion', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Dedicacion', [Column]='IdDedicacion', ColumnsCount=1, ConstraintName='PK_Dedicacion')
     )),
     [TABLE] (TableAlias='Fechas', TableName='dwh.Fechas', PkColumns=('Fecha'), TableColumns=(
@@ -80,8 +93,8 @@
       [TABLE COLUMN] (Name='NombreRepositorio', DataType='varchar(50)', IsNullable=NO),
       [TABLE COLUMN] (Name='NumeroIssue', DataType='int', IsNullable=NO),
       [TABLE COLUMN] (Name='IdRepositorio', DataType='int', IsNullable=NO),
-      [TABLE COLUMN] (Name='Issue', DataType='varchar(100)', IsNullable=YES),
-      [TABLE COLUMN] (Name='UsuarioCreador', DataType='varchar(21)', IsNullable=NO),
+      [TABLE COLUMN] (Name='Issue', DataType='varchar(100)', IsNullable=NO),
+      [TABLE COLUMN] (Name='UsuarioCreador', DataType='varchar(50)', IsNullable=YES),
       [TABLE COLUMN] (Name='NumeroComentarios', DataType='int', IsNullable=NO),
       [TABLE COLUMN] (Name='FechaCreacionIssue', DataType='datetimeoffset', IsNullable=YES),
       [TABLE COLUMN] (Name='FechaActualizacionIssue', DataType='datetimeoffset', IsNullable=YES),
@@ -118,6 +131,16 @@
     ), Indexes=(
       [TABLE INDEX] (Name='BK_Repositorios', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Repositorios', ColumnsCount=2, ConstraintName='BK_Repositorios'),
       [TABLE INDEX] (Name='PK_Repositorios', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Repositorios', [Column]='IdRepositorio', ColumnsCount=1, ConstraintName='PK_Repositorios')
+    )),
+    [TABLE] (TableAlias='Usuarios', TableName='dwh.Usuarios', PkColumns=('IdUsuario'), TableColumns=(
+      [TABLE COLUMN] (Name='IdUsuario', DataType='int', IsNullable=NO, IsIdentity=YES),
+      [TABLE COLUMN] (Name='GithubUser', DataType='varchar(20)', IsNullable=YES),
+      [TABLE COLUMN] (Name='Usuario', DataType='varchar(20)', IsNullable=YES),
+      [TABLE COLUMN] (Name='InsertDate', DataType='datetime', IsNullable=NO),
+      [TABLE COLUMN] (Name='UpdateDate', DataType='datetime', IsNullable=YES)
+    ), Indexes=(
+      [TABLE INDEX] (Name='BK_Usuarios', IsClustered=NO, IsUnique=YES, IsPrimary=NO, IsDisabled=NO, [Schema]='dwh', [Table]='Usuarios', [Column]='GithubUser', ColumnsCount=1, ConstraintName='BK_Usuarios'),
+      [TABLE INDEX] (Name='PK_Usuarios', IsClustered=YES, IsUnique=YES, IsPrimary=YES, IsDisabled=NO, [Schema]='dwh', [Table]='Usuarios', [Column]='IdUsuario', ColumnsCount=1, ConstraintName='PK_Usuarios')
     ))
   ),
   Joins=(
@@ -126,7 +149,10 @@
     [JOIN] (TableAlias1='Dedicacion', TableAlias2='Fechas', JoinType='InnerJoin', UsingColumnsTable1=('Fecha'), UsingColumnsTable2=('Fecha')),
     [JOIN] (TableAlias1='Dedicacion', TableAlias2='Repositorios', JoinType='InnerJoin', UsingColumnsTable1=('IdRepositorio'), UsingColumnsTable2=('IdRepositorio')),
     [JOIN] (TableAlias1='Commits', TableAlias2='Fechas', JoinType='InnerJoin', UsingColumnsTable1=('Fecha'), UsingColumnsTable2=('Fecha'), VerificationResult=[JOIN VERIFICATION] (ResultType='Success', [Date]=d'2025-08-04T23:17:14.8396494+02:00', Duration=0.0761951)),
-    [JOIN] (TableAlias1='Commits', TableAlias2='Repositorios', JoinType='InnerJoin', UsingColumnsTable1=('IdRepositorio'), UsingColumnsTable2=('IdRepositorio'), VerificationResult=[JOIN VERIFICATION] (Message='Esta relación tiene establecida relación referencial en la base de datos. Su corrección está asegurada.', ResultType='Success', [Date]=d'2025-08-04T23:17:14.8399888+02:00'))
+    [JOIN] (TableAlias1='Commits', TableAlias2='Repositorios', JoinType='InnerJoin', UsingColumnsTable1=('IdRepositorio'), UsingColumnsTable2=('IdRepositorio'), VerificationResult=[JOIN VERIFICATION] (Message='Esta relación tiene establecida relación referencial en la base de datos. Su corrección está asegurada.', ResultType='Success', [Date]=d'2025-08-04T23:17:14.8399888+02:00')),
+    [JOIN] (TableAlias1='Dedicacion', TableAlias2='Usuarios', JoinType='LeftJoin', UsingColumnsTable1=('IdUsuario'), UsingColumnsTable2=('IdUsuario')),
+    [JOIN] (TableAlias1='Commits', TableAlias2='Usuarios', JoinType='LeftJoin', UsingColumnsTable1=('IdUsuario'), UsingColumnsTable2=('IdUsuario')),
+    [JOIN] (TableAlias1='Comentarios', TableAlias2='Usuarios', JoinType='LeftJoin', UsingColumnsTable1=('IdUsuario'), UsingColumnsTable2=('IdUsuario'))
   ),
   Items=(
     [BUSINESS ITEM] (Name='Fechas', Guid='vlXeVDaZ', AggregationFunction='Default', Items=(
@@ -137,6 +163,10 @@
         [BUSINESS ITEM] (Name='Nombre mes', Definition=Fechas.NombreMes, Guid='trYUVJgm', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
         [BUSINESS ITEM] (Name='Número mes', Definition=Fechas.NumeroMes, Guid='bDIeicpF', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=())
       ))
+    )),
+    [BUSINESS ITEM] (Name='Usuarios', Guid='KQCidOUV', AggregationFunction='Default', Items=(
+      [BUSINESS ITEM] (Name='Usuario', Definition=Usuarios.Usuario, Guid='nIPMmEms', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Github user', Definition=Usuarios.GithubUser, Guid='pmiTGOhA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=())
     )),
     [BUSINESS ITEM] (Name='Repositorios', Guid='mpAtDiZg', AggregationFunction='Default', Items=(
       [BUSINESS ITEM] (Name='Repositorio', Definition=Repositorios.NombreRepositorio, Guid='emqXFbaA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=(
@@ -155,9 +185,10 @@
     )),
     [BUSINESS ITEM] (Name='Dedicación', Guid='FUfVPzrd', AggregationFunction='Default', Items=(
       [BUSINESS ITEM] (Name='Tipo dedicación', Definition=Dedicacion.TipoDedicacion, Guid='UeIhuCUQ', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
-      [BUSINESS ITEM] (Name='Código dedicación', Definition=Dedicacion.CodigoDedicacion, Guid='wyKRsLqQ', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Código dedicación', Definition=Dedicacion.CodigoDedicacion, Guid='wyKRsLqQ', LovEnabled=YES, Hyperlink=Dedicacion.Url, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Format=[BASIC FORMAT] (FormatType='Hyperlink'), Items=()),
       [BUSINESS ITEM] (Name='Fecha', Definition=Dedicacion.Fecha, Guid='kuntlSzH', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.DateTime', Items=()),
-      [BUSINESS ITEM] (Name='Url', Definition=Dedicacion.Url, Guid='IzzLQVLO', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Autor', Definition=Dedicacion.Autor, Guid='FIbwGJHp', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
+      [BUSINESS ITEM] (Name='Email', Definition=Dedicacion.Email, Guid='EkiOMqRA', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Mensaje', Definition=Dedicacion.Mensaje, Guid='EmQweOhr', LovEnabled=YES, AggregationFunction='Default', DataType=OBJECT_TYPE 'System.String', Items=()),
       [BUSINESS ITEM] (Name='Tareas realizadas', Definition=EXPRESSION (count(Dedicacion.IdDedicacion)), Guid='LgNIFuVu', AggregationFunction='Default', DataType=OBJECT_TYPE 'System.Int32', Items=())
     )),

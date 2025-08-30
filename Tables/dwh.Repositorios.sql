@@ -5,7 +5,7 @@ select
 	repo.RepositoryOwner								#Propietario,
 	repo.RepositoryName									#NombreRepositorio,		
 	repo.FullName										Repositorio,
-	if(CsvClientes.FullName is not null,'Cliente')		EsCliente,
+	if(Clientes.FullName is not null,'Cliente')			EsCliente,
 	repo.DefaultBranch									RamaPrincipal,
 	if(repo.Private=1,'Privado','Publico')				EsPrivado,
 	repo.Size/1024										Mb,
@@ -17,5 +17,5 @@ select
 	if(RepositoryCustomProperties.Value='true')     	ReadCommits
 from stg.Repositories repo
 left join stg.RepositoryCustomProperties filter (PropertyName='ReadCommits') using (RepositoryOwner, RepositoryName)
-left join stg.CsvClientes using (FullName)
+left join stg.Clientes using (FullName)
 check snowflake

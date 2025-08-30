@@ -1,5 +1,5 @@
 ﻿
 
-CREATE OR REPLACE VIEW stg.CsvClientes
+CREATE OR REPLACE VIEW stg.Clientes
 select FullName
 from crono$csv('/csv/clientes.csv')
