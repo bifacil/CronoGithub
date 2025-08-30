@@ -2,4 +2,4 @@
 select 
 	GithubUser,
 	Nombre
-from crono$csv('/csv/githubUsers.csv')
+from crono$csv('/csv/GithubUsers.csv')
