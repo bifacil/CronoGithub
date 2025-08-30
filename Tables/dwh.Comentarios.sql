@@ -5,7 +5,7 @@ select
 	comments.CommentId								#CodigoComentario,
 	Issues.IdIssue									IdIssue NOT NULL NONUNIQUE REFERENCES dwh.Issues ON DELETE CASCADE,
 	Usuarios.IdUsuario								IdUsuario NULL NONUNIQUE REFERENCES dwh.Usuarios,
-	coalesce(Usuarios.Usuario,comments.Author)		Autor,
+	coalesce(Usuarios.Usuario,comments.Author)		Autor varchar(50),
 	comments.[Date]									Fecha date NOT NULL NONUNIQUE REFERENCES dwh.Fechas,
 	comments.CreationDate							FechaHoraCreacion,
 	comments.UpdatedDate							FechaHoraActualizacion,

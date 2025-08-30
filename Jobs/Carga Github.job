@@ -1,4 +1,4 @@
----
+﻿---
 JobName: Carga CronoGithub
 ---
 
@@ -26,8 +26,11 @@ WORKFLOW 'Carga Github' (
 		dwh.Issues,
 		dwh.Comentarios,
 		dwh.Commits,
-		dwh.Dedicacion,
-		DB05.calendas.Dedication
+		dwh.Dedicacion
+	),
+	WORKFLOW 'Calendas' (
+		DB05.calendas.Dedication,
+		DB05.calendas.Issues	
 	)
 	
 )

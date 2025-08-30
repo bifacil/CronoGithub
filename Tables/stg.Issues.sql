@@ -27,3 +27,12 @@ from Github$Issues(
 )
 
 
+
+/*
+-- Elimina todos los issues de Calendas (por si queremos recargarlos 
+delete dwh.Issues
+select #IdRepositorio
+from dwh.Repositorios
+where calendasID is not null
+
+*/

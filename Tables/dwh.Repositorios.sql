@@ -14,8 +14,10 @@ select
 	repo.HtmlUrl										Url,			
 	repo.CreatedAt										FechaCreacion,
 	repo.UpdatedAt										FechaActualizacion,
-	if(RepositoryCustomProperties.Value='true')     	ReadCommits
+	if(RepositoryCustomProperties.Value='true')     	ReadCommits,
+	Calendars.CalendasId								CalendasId
 from stg.Repositories repo
 left join stg.RepositoryCustomProperties filter (PropertyName='ReadCommits') using (RepositoryOwner, RepositoryName)
 left join stg.Clientes using (FullName)
+left join DB05.calendas.Calendars using (RepositoryOwner GithubOwner, RepositoryName)
 check snowflake

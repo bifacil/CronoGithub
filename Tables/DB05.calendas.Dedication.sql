@@ -16,3 +16,6 @@ inner join DB05.calendas.Calendars using Repositorios(Propietario GithubOwner,No
 where
 	Dedicacion.Mensaje not starts with '(Calendas)'
 	
+
+	
+	
