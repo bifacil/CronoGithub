@@ -46,5 +46,7 @@
   IsProceduresViewVisible=YES,
   IsSourceViewVisible=YES,
   IsOthersViewVisible=NO,
-  IsJobViewVisible=YES
+  IsJobViewVisible=YES,
+  CalendasId='crono/crono',
+  CalendasToken='5cxwaj4mudotcp5xgs5poepe6'
 )
